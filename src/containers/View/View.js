@@ -169,7 +169,7 @@ export default class View extends BaseComponent {
     return this.state.stats.map((item) => {
       const ctrl = parseInt(item.clicks / item.views * 100, 10);
       return (
-        <tr key={item.id} onClick={() => actions.openAdView(item)}>
+        <tr key={item.add_date} onClick={() => actions.openAdView(item)}>
           <td>{item.add_date}</td>
           <td>{item.clicks}</td>
           <td>{item.views}</td>

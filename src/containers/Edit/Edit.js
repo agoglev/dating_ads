@@ -45,7 +45,7 @@ export default class Edit extends BaseComponent {
               <Label>Изображение</Label>
               <Input
                 type="file"
-                accept="image/jpg"
+                accept="image/*"
                 onChange={(e) => this._fileDidSelect(e.target.files[0])}
               />
               <FormText color="muted">Размер изображения не более 720x1040 пикселей, формат JPG.</FormText>
@@ -96,6 +96,10 @@ export default class Edit extends BaseComponent {
   _fileDidSelect(file) {
     if (!file) {
       return;
+    }
+
+    if (['image/jpeg', 'image/jpg'].indexOf(file.type) === -1) {
+      return alert('Выбирите файл формата JPEG');
     }
 
     const reader = new FileReader();

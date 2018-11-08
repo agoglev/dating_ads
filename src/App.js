@@ -8,8 +8,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  Button} from 'reactstrap';
+  NavLink} from 'reactstrap';
 
 import * as pages from './constants/pages';
 import * as actions from './actions';
