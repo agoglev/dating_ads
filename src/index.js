@@ -1,12 +1,38 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import store from './store';
+import router from './router';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import { Provider } from 'react-redux';
+import * as actionTypes from './actions/actionTypes';
+import * as api from './services/api';
+import * as vk from './actions/vk';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const hash = window.location.hash;
+if (hash && hash !== '#/') {
+  window.location.hash = '';
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+router.addListener((to, from) => store.dispatch({ type: actionTypes.NAVIGATE, to, from })).start();
+
+function render() {
+  ReactDOM.render(
+    <Provider store={store}>
+      <App store={store} router={router} />
+    </Provider>,
+    document.getElementById('root')
+  );
+}
+
+render();
+
+const  { VK } = window;
+VK.init({
+  apiId: api.CLIENT_ID,
+  status: true
+});
+
+VK.Auth.getLoginStatus(vk.updateAuth);
+VK.Observer.subscribe('auth.sessionChange', vk.updateAuth);
