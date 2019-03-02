@@ -24,6 +24,16 @@ export function init() {
         type: actionTypes.INIT,
         ads: resp.ads
       });
+
+      if (window.openAddId > 0) {
+        for (let i = 0; i < resp.ads.length; i++) {
+          const ad = resp.ads[i];
+          if (ad.id === window.openAddId) {
+            openAdView(ad);
+            break;
+          }
+        }
+      }
     });
 }
 

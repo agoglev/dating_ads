@@ -1,4 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'url-search-params-polyfill';
+import 'core-js/es6';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -10,9 +12,9 @@ import * as actionTypes from './actions/actionTypes';
 import * as api from './services/api';
 import * as vk from './actions/vk';
 
-const hash = window.location.hash;
-if (hash && hash !== '#/') {
-  window.location.hash = '';
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('id')) {
+  window.openAddId = parseInt(urlParams.get('id'), 10);
 }
 
 router.addListener((to, from) => store.dispatch({ type: actionTypes.NAVIGATE, to, from })).start();

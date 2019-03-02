@@ -93,7 +93,7 @@ export default class View extends BaseComponent {
         value: `${ad.balance} р.`
       },
       {
-        title: 'Цена клика',
+        title: 'Цена',
         value: `${ad.cost} р.`
       }
     ];
@@ -112,7 +112,8 @@ export default class View extends BaseComponent {
     if (this.data.device > 0) {
       const devices = {
         1: 'iPhone',
-        2: 'Android'
+        2: 'Android',
+        3: 'Web'
       };
       items.push({
         title: 'Девайс',

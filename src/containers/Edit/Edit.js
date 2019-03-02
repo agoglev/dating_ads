@@ -73,6 +73,7 @@ export default class Edit extends BaseComponent {
                 <option value={0}>Любые</option>
                 <option value={1}>iPhone</option>
                 <option value={2}>Android</option>
+                <option value={3}>Web</option>
               </Input>
             </FormGroup>
             <Button color="primary" onClick={this._saveButtonDidPress}>{this.state.saving ? 'Сохранение..' : 'Сохранить'}</Button>

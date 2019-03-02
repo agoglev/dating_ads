@@ -22,7 +22,7 @@ export const routes = [
   },
   {
     name: pages.VIEW,
-    path: pages.VIEW
+    path: `${pages.VIEW}?id`
   },
   {
     name: pages.ALL,
@@ -36,7 +36,7 @@ const params = {
 };
 
 let router = createRouter(routes, params)
-  .usePlugin(browserPlugin({ base: '/dating_ads/', useHash: true }))
+  .usePlugin(browserPlugin({ base: '/dating_ads/', useHash: false }))
   .usePlugin(listenersPlugin());
 
 export default router;
