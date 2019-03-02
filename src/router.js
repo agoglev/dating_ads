@@ -36,7 +36,7 @@ const params = {
 };
 
 let router = createRouter(routes, params)
-  .usePlugin(browserPlugin({ base: '/dating_ads/', useHash: false }))
+  .usePlugin(browserPlugin({ base: '/dating_ads/', useHash: true }))
   .usePlugin(listenersPlugin());
 
 export default router;

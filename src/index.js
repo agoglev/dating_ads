@@ -12,7 +12,8 @@ import * as actionTypes from './actions/actionTypes';
 import * as api from './services/api';
 import * as vk from './actions/vk';
 
-const urlParams = new URLSearchParams(window.location.search);
+let hashExp = (window.location.hash || '').split('?');
+const urlParams = new URLSearchParams(hashExp[1] || '');
 if (urlParams.get('id')) {
   window.openAddId = parseInt(urlParams.get('id'), 10);
 }
